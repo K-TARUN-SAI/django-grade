@@ -1,0 +1,111 @@
+{% extends 'Navbar/homepagenavbar.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    {% block body %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC University - Graduate Service Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container-fluid {
+            display: flex;
+            height: 100%;
+        }
+        .login-sidebar {
+            background: white;
+            padding: 50px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            flex: 0 0 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .login-sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #004080;
+        }
+        .login-sidebar form {
+            margin-top: 30px;
+        }
+        .login-sidebar form .form-group {
+            margin-bottom: 20px;
+        }
+        .login-sidebar form .form-control {
+            height: 45px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .login-sidebar form .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+        .login-sidebar .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .login-sidebar .links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .illustration {
+            flex: 1;
+            background: url('{% static "images/8.webp" %}') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .illustration::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 128, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="login-sidebar">
+        <div class="text-center mb-4">
+            <img src="{% static 'images/abc.png' %}" alt="ABC University Logo" width="100">
+        </div>
+        <h1>Graduate Service</h1>
+        <form method="post" action="{% url 'login1' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+            <div class="links">
+                <a href="{% url 'signup' %}">Register</a>
+                <a href="#">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+    <div class="illustration">
+    </div>
+</div>
+{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

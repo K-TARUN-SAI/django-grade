@@ -1,0 +1,10 @@
+{% extends 'Navbar/studentnavbar.html' %}
+
+{% block body %}
+  <h2>Apply for Revaluation - {{ answer_paper.subject }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

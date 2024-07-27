@@ -1,0 +1,10 @@
+{% extends 'Navbar/studentnavbar.html' %}
+
+{% block body %}
+  <h2>Search for Your Answer Sheets</h2>
+  <form method="post" action="{% url 'search_student_id' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+{% endblock %}

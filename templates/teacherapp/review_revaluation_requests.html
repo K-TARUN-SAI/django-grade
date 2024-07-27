@@ -1,0 +1,25 @@
+{% extends 'Navbar/teachernavbar.html' %}
+{% load static %}
+{% block body %}
+  <h2>Review Revaluation Requests</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Subject</th>
+        <th>Reason</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for request in RevaluationRequests %}
+        <tr>
+          <td>{{ request.student.student_name }}</td>
+          <td>{{ request.answer_paper.subject }}</td>
+          <td>{{ request.reason }}</td>
+          <td>{{ request.created_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

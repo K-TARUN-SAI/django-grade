@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Answer Sheet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPB0RmbI_B2hcHGEMP8Zdyqe1AEdJ8Ch7T3FsG1sbny2J1ZtfqHqoUImRvd3Np8m9cInumK1mztx0Hm-C9ZA4dnf-JAbQiyEkARn0_-XwYRwDgyJsn9w1jUiZgKAX1kPvX-_AnWKgm3XUgEM1OnCB0hchalF4dQk8IBpcTKJjVv-2MEdZ5qWoY4n0z/s16000/GettyImages-1210746752.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .upload-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .upload-container h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form .form-group {
+            margin-bottom: 15px;
+        }
+
+        form .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        form .form-group input[type="file"] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+
+        form .form-group input[type="file"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        form button {
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+            align-self: center;
+            margin-top: 15px;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 10px 0;
+            text-align: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .upload-container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .upload-container {
+                padding: 15px;
+            }
+
+            .upload-container h2 {
+                font-size: 24px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+  {% extends 'Navbar/teachernavbar.html' %}
+  {% load static %}
+
+  {% block body %}
+  <div class="container">
+    <div class="upload-container">
+      <h2>Upload Answer Sheet</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"><i class="fas fa-upload"></i> Upload</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+
+  <footer class="footer">
+    &copy; 2024 Student Grade Management System
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

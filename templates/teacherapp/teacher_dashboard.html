@@ -1,0 +1,47 @@
+{% extends 'Navbar/teachernavbar.html' %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .list-group-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin: 5px;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .enter-marks { background-color: #A47EFB; }
+        .view-marks { background-color: #68B3D8; }
+        .upload-answer-sheet { background-color: #8BC2A1; }
+        .review-revaluation { background-color: #A9C686; }
+        .logout { background-color: #E26A64; }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Teacher Dashboard</h1>
+        <div class="list-group">
+            <a href="{% url 'enter_marks' %}" class="list-group-item list-group-item-action enter-marks">Enter Marks</a>
+            <a href="{% url 'view_marks' %}" class="list-group-item list-group-item-action view-marks">View Marks</a>
+            <a href="{% url 'upload_answer_sheet' %}" class="list-group-item list-group-item-action upload-answer-sheet">Upload Marks</a>
+            <a href="{% url 'logout' %}" class="list-group-item list-group-item-action logout">Logout</a>
+            <!-- Add more options as needed with corresponding styles -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'Navbar/teachernavbar.html' %}
+{% load static %}
+
+{% block body %}
+  <h2>Edit Marks for {{ student.student_name }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

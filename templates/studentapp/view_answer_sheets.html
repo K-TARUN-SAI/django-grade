@@ -1,0 +1,36 @@
+{% extends 'Navbar/studentnavbar.html' %}
+
+{% block body %}
+  <h2>Search for Your Answer Sheets</h2>
+  <form method="get" action="{% url 'view_answer_sheets' %}">
+    <label for="student_id">Student ID:</label>
+    <input type="text" id="student_id" name="student_id" value="{{ student_id|default_if_none:'' }}">
+    <button type="submit">Search</button>
+  </form>
+
+  {% if student_id %}
+    {% if answer_papers %}
+      <h2>Your Answer Sheets</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Answer Sheet</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for paper in answer_papers %}
+            <tr>
+              <td>{{ paper.subject }}</td>
+              <td><a href="{{ paper.file.url }}" download>Download</a></td>
+              <td><a href="{% url 'apply_revaluation' paper.pk %}">Apply for Revaluation</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No answer sheets found for the provided student ID.</p>
+    {% endif %}
+  {% endif %}
+{% endblock %}
